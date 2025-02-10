@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import './App.scss';
 import { MoviesList } from './components/MoviesList';
 import { NewMovie } from './components/NewMovie';
@@ -15,7 +16,7 @@ export const App = () => {
   return (
     <div className="page">
       <div className="page-content">
-        <MoviesList movies={moviesFromServer} />
+        <MoviesList movies={post} />
       </div>
       <div className="sidebar">
         <NewMovie onAdd={addPost} />

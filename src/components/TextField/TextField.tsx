@@ -53,7 +53,7 @@ export const TextField: React.FC<Props> = ({
             'is-danger': hasError,
           })}
           placeholder={placeholder}
-          defaultValue={generatedValue}
+          value={value}
           onChange={handleInput}
           onBlur={() => {
             setTouched(true);

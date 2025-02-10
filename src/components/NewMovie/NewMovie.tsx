@@ -76,7 +76,7 @@ export const NewMovie = ({ onAdd }) => {
             data-cy="submit-button"
             className="button is-link"
             disabled={!isFormValid}
-            onChange={onSubmit}
+            onClick={onSubmit}
           >
             Add
           </button>
