@@ -14,7 +14,7 @@ export const NewMovie = ({ onAdd }) => {
     imdbUrl.trim() !== '' &&
     imdbId.trim() !== '';
 
-  const onSubmit = (event: React.FormEvent<HTMLButtonElement>) => {
+  const onSubmitForms = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     onAdd({
@@ -24,10 +24,16 @@ export const NewMovie = ({ onAdd }) => {
       imdbUrl,
       imdbId,
     });
+
+    setTitle('');
+    setDescription('');
+    setImgUrl('');
+    setImdbUrl('');
+    setImdbId('');
   };
 
   return (
-    <form className="NewMovie">
+    <form className="NewMovie" onSubmit={onSubmitForms}>
       <h2 className="title">Add a movie</h2>
 
       <TextField
@@ -76,7 +82,6 @@ export const NewMovie = ({ onAdd }) => {
             data-cy="submit-button"
             className="button is-link"
             disabled={!isFormValid}
-            onClick={onSubmit}
           >
             Add
           </button>
