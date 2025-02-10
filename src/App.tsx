@@ -3,29 +3,22 @@ import { MoviesList } from './components/MoviesList';
 import { NewMovie } from './components/NewMovie';
 import moviesFromServer from './api/movies.json';
 import { useState } from 'react';
+import { Movie } from './types/Movie';
 
 export const App = () => {
-  // Стан для зберігання фільмів
-  const [movies, setMovies] = useState(moviesFromServer);
+  const [post, setPost] = useState(moviesFromServer);
 
-  // Функція для додавання нового фільму
-  const addMovie = (newMovie: {
-    title: string;
-    description: string;
-    imgUrl: string;
-    imdbUrl: string;
-    imdbId: string;
-  }) => {
-    setMovies(currentMovies => [...currentMovies, newMovie]);
+  const addPost = (newPost: Movie) => {
+    setPost(currentPost => [...currentPost, newPost]);
   };
 
   return (
     <div className="page">
       <div className="page-content">
-        <MoviesList movies={movies} />
+        <MoviesList movies={moviesFromServer} />
       </div>
       <div className="sidebar">
-        <NewMovie onAdd={addMovie} />
+        <NewMovie onAdd={addPost} />
       </div>
     </div>
   );

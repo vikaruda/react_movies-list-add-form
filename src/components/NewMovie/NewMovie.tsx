@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { TextField } from '../TextField';
 
-export const NewMovie = () => {
+export const NewMovie = ({ onAdd }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [imgUrl, setImgUrl] = useState('');
@@ -13,6 +13,18 @@ export const NewMovie = () => {
     imgUrl.trim() !== '' &&
     imdbUrl.trim() !== '' &&
     imdbId.trim() !== '';
+
+  const onSubmit = (event: React.FormEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
+    onAdd({
+      title,
+      description,
+      imgUrl,
+      imdbUrl,
+      imdbId,
+    });
+  };
 
   return (
     <form className="NewMovie">
@@ -64,6 +76,7 @@ export const NewMovie = () => {
             data-cy="submit-button"
             className="button is-link"
             disabled={!isFormValid}
+            onChange={onSubmit}
           >
             Add
           </button>
